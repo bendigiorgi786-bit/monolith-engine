@@ -1,0 +1,37 @@
+/* Core Custom Enhancements */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Cursor Spotlight Glow Effect */
+#cursor-spotlight {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.05) 50%, rgba(0,0,0,0) 75%);
+}
+
+/* Pipeline Button Active State */
+.pipeline-btn.active {
+    border-color: #10b981;
+    background-color: #08140e;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #040a06;
+}
+::-webkit-scrollbar-thumb {
+    background: #183827;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #10b981;
+}
+
+input[type="range"] {
+    touch-action: manipulation;
+}

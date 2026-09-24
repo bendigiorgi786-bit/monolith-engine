@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONOLITH // Enterprise Neural Architecture</title>
+    
+    <!-- Embedded Emerald Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23040a06'/><rect x='2' y='2' width='28' height='28' rx='6' fill='none' stroke='%2310b981' stroke-width='2'/><circle cx='16' cy='16' r='6' fill='%2310b981'/></svg>">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emeraldTheme: {
+                            bg: '#040a06',
+                            surface: '#08140e',
+                            card: '#0c1e15',
+                            border: '#183827',
+                            emerald: '#10b981',
+                            darkEmerald: '#059669',
+                            lightEmerald: '#34d399',
+                            textMuted: '#81a391',
+                            textMain: '#ecfdf5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-emeraldTheme-bg text-emeraldTheme-textMain font-sans antialiased relative overflow-x-hidden selection:bg-emeraldTheme-emerald selection:text-black">
+
+    <!-- Fluid Emerald Wave Background Canvas -->
+    <canvas id="emerald-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-60"></canvas>
+
+    <!-- Cursor Spotlight Light -->
+    <div id="cursor-spotlight" class="fixed pointer-events-none rounded-full blur-3xl z-10 transition-transform duration-100 ease-out opacity-30 bg-emeraldTheme-emerald"></div>
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-emeraldTheme-bg/80 backdrop-blur-xl border-b border-emeraldTheme-border/60">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emeraldTheme-emerald to-emeraldTheme-darkEmerald p-[1px] group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-emeraldTheme-bg rounded-[11px] flex items-center justify-center font-mono font-bold text-emeraldTheme-emerald">
+                        M
+                    </div>
+                </div>
+                <span class="font-bold tracking-tight text-lg font-mono text-white">MONOLITH<span class="text-emeraldTheme-emerald">.AI</span></span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 text-xs font-mono tracking-wider text-emeraldTheme-textMuted">
+                <a href="#pipeline" class="hover:text-emeraldTheme-emerald transition-colors">// PIPELINE</a>
+                <a href="#performance" class="hover:text-emeraldTheme-emerald transition-colors">// PERFORMANCE</a>
+                <a href="#calculator" class="hover:text-emeraldTheme-emerald transition-colors">// ROI CALCULATOR</a>
+                <a href="#nodes" class="hover:text-emeraldTheme-emerald transition-colors">// NODES</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#nodes" class="px-5 py-2.5 rounded-xl bg-emeraldTheme-emerald text-black text-xs font-mono font-bold hover:bg-emeraldTheme-lightEmerald transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                    DEPLOY MONOLITH
+                </a>
+            </div>
+
+            <!-- Mobile Drawer Button -->
+            <button id="menu-toggle" class="md:hidden text-emeraldTheme-textMain p-2">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-emeraldTheme-border bg-emeraldTheme-surface px-6 py-6 space-y-4 font-mono text-xs">
+            <a href="#pipeline" class="block text-emeraldTheme-textMuted hover:text-emeraldTheme-emerald mobile-link">// PIPELINE</a>
+            <a href="#performance" class="block text-emeraldTheme-textMuted hover:text-emeraldTheme-emerald mobile-link">// PERFORMANCE</a>
+            <a href="#calculator" class="block text-emeraldTheme-textMuted hover:text-emeraldTheme-emerald mobile-link">// ROI CALCULATOR</a>
+            <a href="#nodes" class="block text-emeraldTheme-textMuted hover:text-emeraldTheme-emerald mobile-link">// NODES</a>
+            <a href="#nodes" class="block w-full text-center py-3 rounded-xl bg-emeraldTheme-emerald text-black font-bold">DEPLOY MONOLITH</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-32 pb-20 px-6 z-20">
+        <div class="max-w-5xl mx-auto text-center space-y-8">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emeraldTheme-surface border border-emeraldTheme-border text-xs font-mono text-emeraldTheme-emerald">
+                <span class="w-2 h-2 rounded-full bg-emeraldTheme-emerald animate-ping"></span>
+                MONOLITH ENGINE 5.0 :: OBSIDIAN RELEASE
+            </div>
+
+            <h1 class="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight leading-none uppercase text-white">
+                DETERMINISTIC <br>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-emeraldTheme-lightEmerald via-emeraldTheme-emerald to-emeraldTheme-darkEmerald">
+                    NEURAL ARCHITECTURE
+                </span>
+            </h1>
+
+            <p class="text-emeraldTheme-textMuted max-w-2xl mx-auto text-sm md:text-base font-mono leading-relaxed">
+                Sub-millisecond inference pipelines built on zero-copy shared memory, speculative execution trees, and microsecond node synchronization.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="#pipeline" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emeraldTheme-emerald text-black font-mono font-bold text-xs uppercase tracking-wider hover:bg-emeraldTheme-lightEmerald transition-all shadow-[0_0_25px_rgba(16,185,129,0.35)] flex items-center justify-center gap-2">
+                    INSPECT ARCHITECTURE
+                    <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+                <a href="#calculator" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emeraldTheme-surface border border-emeraldTheme-border text-emeraldTheme-textMain font-mono font-bold text-xs uppercase tracking-wider hover:border-emeraldTheme-emerald transition-all">
+                    CALCULATE GAINS
+                </a>
+            </div>
+
+            <!-- Live Metrics HUD -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-16 border-t border-emeraldTheme-border/80 font-mono text-left">
+                <div class="p-5 rounded-2xl bg-emeraldTheme-card/70 border border-emeraldTheme-border">
+                    <span class="text-[10px] text-emeraldTheme-textMuted block mb-1">LATENCY P99</span>
+                    <span class="text-2xl font-bold text-emeraldTheme-lightEmerald">0.18 ms</span>
+                </div>
+                <div class="p-5 rounded-2xl bg-emeraldTheme-card/70 border border-emeraldTheme-border">
+                    <span class="text-[10px] text-emeraldTheme-textMuted block mb-1">THROUGHPUT</span>
+                    <span class="text-2xl font-bold text-white">2.4M req/s</span>
+                </div>
+                <div class="p-5 rounded-2xl bg-emeraldTheme-card/70 border border-emeraldTheme-border">
+                    <span class="text-[10px] text-emeraldTheme-textMuted block mb-1">GPU UTILIZATION</span>
+                    <span class="text-2xl font-bold text-emeraldTheme-emerald">99.8%</span>
+                </div>
+                <div class="p-5 rounded-2xl bg-emeraldTheme-card/70 border border-emeraldTheme-border">
+                    <span class="text-[10px] text-emeraldTheme-textMuted block mb-1">UPTIME SLA</span>
+                    <span class="text-2xl font-bold text-emeraldTheme-lightEmerald">99.999%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Architecture Pipeline -->
+    <section id="pipeline" class="py-24 px-6 relative z-20 max-w-6xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+            <span class="text-xs font-mono text-emeraldTheme-emerald tracking-widest uppercase">// EXPLICIT DATA PIPELINE</span>
+            <h2 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight">Interactive Pipeline</h2>
+        </div>
+
+        <div class="bg-emeraldTheme-card border border-emeraldTheme-border rounded-3xl p-8 md:p-12 shadow-2xl">
+            <!-- Stage Selector Buttons -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 font-mono">
+                <button class="pipeline-btn active p-4 rounded-xl border border-emeraldTheme-border bg-emeraldTheme-surface text-left transition-all" data-stage="ingest">
+                    <span class="text-[10px] text-emeraldTheme-textMuted block">STAGE_01</span>
+                    <span class="font-bold text-sm text-white">RDMA Ingest</span>
+                </button>
+                <button class="pipeline-btn p-4 rounded-xl border border-emeraldTheme-border bg-emeraldTheme-surface/40 text-left transition-all hover:bg-emeraldTheme-surface" data-stage="index">
+                    <span class="text-[10px] text-emeraldTheme-textMuted block">STAGE_02</span>
+                    <span class="font-bold text-sm text-white">HNSW Vectoring</span>
+                </button>
+                <button class="pipeline-btn p-4 rounded-xl border border-emeraldTheme-border bg-emeraldTheme-surface/40 text-left transition-all hover:bg-emeraldTheme-surface" data-stage="execute">
+                    <span class="text-[10px] text-emeraldTheme-textMuted block">STAGE_03</span>
+                    <span class="font-bold text-sm text-white">Speculative Tree</span>
+                </button>
+                <button class="pipeline-btn p-4 rounded-xl border border-emeraldTheme-border bg-emeraldTheme-surface/40 text-left transition-all hover:bg-emeraldTheme-surface" data-stage="flush">
+                    <span class="text-[10px] text-emeraldTheme-textMuted block">STAGE_04</span>
+                    <span class="font-bold text-sm text-white">SSE Stream</span>
+                </button>
+            </div>
+
+            <!-- Dynamic Stage Display -->
+            <div class="grid md:grid-cols-2 gap-8 items-center bg-emeraldTheme-surface p-8 rounded-2xl border border-emeraldTheme-border">
+                <div class="space-y-4">
+                    <span id="stage-tag" class="inline-block px-3 py-1 rounded-md bg-emeraldTheme-emerald/10 text-emeraldTheme-emerald font-mono text-xs font-bold border border-emeraldTheme-emerald/20">
+                        DIRECT MEMORY LOCK
+                    </span>
+                    <h3 id="stage-title" class="text-2xl font-bold text-white font-mono">RDMA Zero-Copy Ingestion</h3>
+                    <p id="stage-desc" class="text-emeraldTheme-textMuted text-sm leading-relaxed font-mono">
+                        Bypasses OS kernel network stacks to stream payload packets straight into high-bandwidth GPU VRAM buffers.
+                    </p>
+                    <div class="pt-4 grid grid-cols-2 gap-4 font-mono text-xs border-t border-emeraldTheme-border">
+                        <div>
+                            <span class="text-emeraldTheme-textMuted block">OVERHEAD</span>
+                            <span id="stage-m1" class="font-bold text-emeraldTheme-lightEmerald">0.000 ms</span>
+                        </div>
+                        <div>
+                            <span class="text-emeraldTheme-textMuted block">PARALLEL PIPES</span>
+                            <span id="stage-m2" class="font-bold text-white">512 Channels</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-black/90 p-6 rounded-xl border border-emeraldTheme-border font-mono text-xs space-y-2 text-emeraldTheme-textMuted overflow-x-auto">
+                    <div class="text-emeraldTheme-darkEmerald">// Live Engine Telemetry</div>
+                    <div class="text-emeraldTheme-emerald">$ monolith --inspect --stage=<span id="stage-cmd">ingest</span></div>
+                    <div id="stage-terminal" class="space-y-1 text-slate-300 pt-2">
+                        <div>[0.00ms] Allocation lock acquired on VRAM 0x7FFF</div>
+                        <div class="text-emeraldTheme-lightEmerald">[0.01ms] Ingesting 2.4M packets/sec...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Highlights -->
+    <section id="performance" class="py-24 px-6 relative z-20 max-w-6xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+            <span class="text-xs font-mono text-emeraldTheme-emerald tracking-widest uppercase">// HARDWARE OPTIMIZATION</span>
+            <h2 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight">Engineered Benchmarks</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-8 rounded-3xl bg-emeraldTheme-card border border-emeraldTheme-border space-y-4 hover:border-emeraldTheme-emerald/60 transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-emeraldTheme-emerald/10 border border-emeraldTheme-emerald/30 flex items-center justify-center text-emeraldTheme-emerald">
+                    <i data-lucide="zap" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white font-mono">Microsecond P99</h3>
+                <p class="text-emeraldTheme-textMuted text-xs font-mono leading-relaxed">
+                    Custom C++23 kernel primitives ensure compute operations complete within tight determinism boundaries.
+                </p>
+            </div>
+
+            <div class="p-8 rounded-3xl bg-emeraldTheme-card border border-emeraldTheme-border space-y-4 hover:border-emeraldTheme-emerald/60 transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-emeraldTheme-emerald/10 border border-emeraldTheme-emerald/30 flex items-center justify-center text-emeraldTheme-emerald">
+                    <i data-lucide="cpu" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white font-mono">82% Memory Compression</h3>
+                <p class="text-emeraldTheme-textMuted text-xs font-mono leading-relaxed">
+                    Native FP8 weight quantization maintains exact LLM precision while drastically shrinking required GPU memory footprint.
+                </p>
+            </div>
+
+            <div class="p-8 rounded-3xl bg-emeraldTheme-card border border-emeraldTheme-border space-y-4 hover:border-emeraldTheme-emerald/60 transition-all">
+                <div class="w-12 h-12 rounded-2xl bg-emeraldTheme-emerald/10 border border-emeraldTheme-emerald/30 flex items-center justify-center text-emeraldTheme-emerald">
+                    <i data-lucide="shield" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white font-mono">Zero-Knowledge Mesh</h3>
+                <p class="text-emeraldTheme-textMuted text-xs font-mono leading-relaxed">
+                    End-to-end encrypted payload routing ensures zero plain-text leaks across node state boundaries.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Latency & Cost Calculator -->
+    <section id="calculator" class="py-24 px-6 relative z-20 max-w-5xl mx-auto">
+        <div class="bg-emeraldTheme-card border border-emeraldTheme-border p-8 md:p-12 rounded-3xl shadow-2xl">
+            <div class="text-center max-w-xl mx-auto mb-10 space-y-2">
+                <h2 class="text-3xl font-black text-white font-mono">ROI & Compute Calculator</h2>
+                <p class="text-emeraldTheme-textMuted text-xs font-mono">Adjust scale parameters to inspect compute efficiency gains.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-6 font-mono text-xs">
+                    <div>
+                        <div class="flex justify-between text-emeraldTheme-textMain mb-2">
+                            <span>MONTHLY REQUEST VOLUME</span>
+                            <span id="calc-vol-text" class="font-bold text-emeraldTheme-emerald">100 Million</span>
+                        </div>
+                        <input id="calc-vol-slider" type="range" min="10" max="500" value="100" class="w-full accent-emeraldTheme-emerald cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-emeraldTheme-textMain mb-2">
+                            <span>CURRENT LATENCY</span>
+                            <span id="calc-lat-text" class="font-bold text-emeraldTheme-lightEmerald">150 ms</span>
+                        </div>
+                        <input id="calc-lat-slider" type="range" min="20" max="500" value="150" class="w-full accent-emeraldTheme-emerald cursor-pointer">
+                    </div>
+                </div>
+
+                <div class="bg-emeraldTheme-surface p-8 rounded-2xl border border-emeraldTheme-border space-y-6 text-center font-mono">
+                    <div>
+                        <span class="text-[10px] text-emeraldTheme-textMuted block uppercase">ESTIMATED MONTHLY SAVINGS</span>
+                        <span id="calc-savings" class="text-4xl md:text-5xl font-black text-emeraldTheme-emerald">$28,400</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-emeraldTheme-border text-xs">
+                        <div>
+                            <span class="text-emeraldTheme-textMuted block">NEW MONOLITH LATENCY</span>
+                            <span id="calc-new-lat" class="font-bold text-white">0.30 ms</span>
+                        </div>
+                        <div>
+                            <span class="text-emeraldTheme-textMuted block">INFRA SAVINGS</span>
+                            <span class="font-bold text-emeraldTheme-lightEmerald">84% GPU Reduction</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Node Deployment Pricing -->
+    <section id="nodes" class="py-24 px-6 relative z-20 max-w-6xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+            <span class="text-xs font-mono text-emeraldTheme-emerald tracking-widest uppercase">// INFRASTRUCTURE TIERS</span>
+            <h2 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight">Deploy Nodes</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Node Tier 1 -->
+            <div class="bg-emeraldTheme-card p-8 rounded-3xl border border-emeraldTheme-border flex flex-col justify-between">
+                <div class="font-mono">
+                    <span class="text-xs text-emeraldTheme-textMuted uppercase">NODE // EDGE</span>
+                    <div class="text-4xl font-black text-white my-4">$350 <span class="text-xs font-normal text-emeraldTheme-textMuted">/mo</span></div>
+                    <ul class="space-y-3 text-xs text-emeraldTheme-textMuted mb-8">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emeraldTheme-emerald"></i> Up to 25M requests/mo</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emeraldTheme-emerald"></i> HNSW Vector Acceleration</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emeraldTheme-emerald"></i> Standard Slack Support</li>
+                    </ul>
+                </div>
+                <button class="w-full py-3.5 rounded-xl border border-emeraldTheme-border text-white font-mono font-bold text-xs hover:border-emeraldTheme-emerald transition-all">
+                    Initialize Node
+                </button>
+            </div>
+
+            <!-- Node Tier 2 (Featured) -->
+            <div class="bg-emeraldTheme-card p-8 rounded-3xl border-2 border-emeraldTheme-emerald relative flex flex-col justify-between shadow-[0_0_30px_rgba(16,185,129,0.15)]">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-emeraldTheme-emerald text-black text-[10px] font-mono font-bold uppercase rounded-full">
+                    RECOMMENDED
+                </div>
+                <div class="font-mono">
+                    <span class="text-xs text-emeraldTheme-emerald uppercase">NODE // CLUSTER</span>
+                    <div class="text-4xl font-black text-white my-4">$1,480 <span class="text-xs font-normal text-emeraldTheme-textMuted">/mo</span></div>
+                    <ul class="space-y-3 text-xs text-emeraldTheme-textMain mb-8">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emeraldTheme-emerald"></i> Up to 250M requests/mo</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emeraldTheme-emerald"></i> Speculative Execution Engine</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emeraldTheme-emerald"></i> Guaranteed 0.2ms SLA</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emeraldTheme-emerald"></i> Dedicated VRAM Cluster</li>
+                    </ul>
+                </div>
+                <button class="w-full py-3.5 rounded-xl bg-emeraldTheme-emerald text-black font-mono font-bold text-xs hover:bg-emeraldTheme-lightEmerald transition-all shadow-md">
+                    Deploy Cluster
+                </button>
+            </div>
+
+            <!-- Node Tier 3 -->
+            <div class="bg-emeraldTheme-card p-8 rounded-3xl border border-emeraldTheme-border flex flex-col justify-between">
+                <div class="font-mono">
+                    <span class="text-xs text-emeraldTheme-textMuted uppercase">NODE // ENTERPRISE</span>
+                    <div class="text-4xl font-black text-white my-4">Custom</div>
+                    <ul class="space-y-3 text-xs text-emeraldTheme-textMuted mb-8">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emeraldTheme-emerald"></i> Unlimited throughput volume</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emeraldTheme-emerald"></i> On-premise air-gapped hardware</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emeraldTheme-emerald"></i> 24/7 Dedicated Engineers</li>
+                    </ul>
+                </div>
+                <button class="w-full py-3.5 rounded-xl border border-emeraldTheme-border text-white font-mono font-bold text-xs hover:border-emeraldTheme-emerald transition-all">
+                    Contact Engineering
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-emeraldTheme-border py-12 px-6 relative z-20 text-xs text-emeraldTheme-textMuted font-mono">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>© 2026 MONOLITH SYSTEMS INC. // OBSIDIAN EMERALD ENGINE</div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-emeraldTheme-emerald transition-colors">PRIVACY</a>
+                <a href="#" class="hover:text-emeraldTheme-emerald transition-colors">SECURITY</a>
+                <a href="#" class="hover:text-emeraldTheme-emerald transition-colors">SYSTEM STATUS</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>
